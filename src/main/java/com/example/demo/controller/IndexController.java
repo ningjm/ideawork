@@ -26,9 +26,14 @@ public class IndexController {
         user3.setName("NJM3");
         user3.setAge(234);
         user3.setMoney(8830.2);
+        User user4 = new User();
+        user4.setName("NJM4");
+        user4.setAge(234);
+        user4.setMoney(8830.2);
         map.put("first",user);
         map.put("second",user2);
         map.put("third",user3);
+        map.put("four",user4);
         return map;
     }
 }
