@@ -23,4 +23,9 @@ public class IndexController {
         PageInfo<List<User>> users = userService.allUser();
         return users;
     }
+
+    @RequestMapping(value = "/insert",method = RequestMethod.POST)
+    public int insert(User user){
+        return userService.insert(user);
+    }
 }
