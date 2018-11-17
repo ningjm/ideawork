@@ -1,39 +1,26 @@
 package com.example.demo.controller;
 
 import com.example.demo.pojo.User;
+import com.example.demo.service.IUserService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class IndexController {
 
+    @Resource
+    public IUserService userService;
+
     @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public Map<String,User> index(){
-        Map<String,User> map = new HashMap();
-        User user = new User();
-        user.setName("NJM");
-        user.setAge(155);
-        user.setMoney(8830.6);
-        User user2 = new User();
-        user2.setName("NJM2");
-        user2.setAge(1889);
-        user2.setMoney(8830.1);
-        User user3 = new User();
-        user3.setName("NJM3");
-        user3.setAge(234);
-        user3.setMoney(8830.2);
-        User user4 = new User();
-        user4.setName("NJM4");
-        user4.setAge(234);
-        user4.setMoney(8830.2);
-        map.put("first",user);
-        map.put("second",user2);
-        map.put("third",user3);
-        map.put("four",user4);
-        return map;
+    public PageInfo<List<User>> index(){
+        PageInfo<List<User>> users = userService.allUser();
+        return users;
     }
 }
