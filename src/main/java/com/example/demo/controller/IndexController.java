@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 可以用maven的install来打jar、war包
+ */
+
 //@RestController
 @Controller
 public class IndexController {
