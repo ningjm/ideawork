@@ -3,6 +3,8 @@ package com.example.demo.controller;
 import com.example.demo.pojo.User;
 import com.example.demo.service.IUserService;
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,6 +21,8 @@ import java.util.List;
 //@RestController
 @Controller
 public class IndexController {
+
+    private static Logger logger =  LoggerFactory.getLogger(IndexController.class);
 
     @Resource
     public IUserService userService;
@@ -38,6 +42,8 @@ public class IndexController {
          * spring.thymeleaf.suffix
          * 指定模板的后缀，默认为:.html
          */
+        logger.info("指定模板的前缀，默认为:classpath:/templates/");
+        logger.error("指定模板的前缀，默认为:classpath:/templates/");
         return "htl/index";
     }
 
