@@ -5,10 +5,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication      //扫描包（注解等等）
 @MapperScan("com.example.demo.mapper")  //扫描mapper
+@EnableScheduling
 @EnableTransactionManagement    //扫描事务
 public class DemoApplication  extends SpringBootServletInitializer {
 

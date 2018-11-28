@@ -19,5 +19,7 @@ public interface IUserService {
      */
     PageInfo<List<User>> allUser();
 
+//    void job();
+
     int insert(User record);
 }

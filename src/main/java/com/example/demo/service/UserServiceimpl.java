@@ -4,11 +4,13 @@ import com.example.demo.mapper.UserMapper;
 import com.example.demo.pojo.User;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @program: demo
@@ -34,8 +36,13 @@ public class UserServiceimpl implements IUserService {
     @Override
     public int insert(User record) {
         userMapper.insert(record);
-        int a = 1/0;
-        userMapper.insert(record);
+//        int a = 1/0;
+//        userMapper.insert(record);
         return 1;
     }
+
+//    @Scheduled(cron = "*/6 * * * * ?")
+//    public void job(){
+//        System.out.println(UUID.randomUUID().toString());
+//    }
 }

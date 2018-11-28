@@ -5,9 +5,12 @@ server:
 spring:
   datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/springboot?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT
+      url: jdbc:mysql://192.168.2.104:3306/springboot?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=GMT
       username: root
       password: a13699770386bb
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/aa
 
 
 mybatis:

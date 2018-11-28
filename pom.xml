@@ -6,7 +6,7 @@
     <groupId>com.example</groupId>
     <artifactId>ideawork</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
@@ -28,28 +28,30 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
+            <!--去除内部tomcat-->
+            <!--<exclusions>-->
 
-                <exclusion>
+                <!--<exclusion>-->
 
-                    <groupId>org.springframework.boot</groupId>
+                    <!--<groupId>org.springframework.boot</groupId>-->
 
-                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
 
-                </exclusion>
+                <!--</exclusion>-->
 
-            </exclusions>
+            <!--</exclusions>-->
         </dependency>
 
-        <dependency>
+        <!--运行时用到的tomcat，打成war时会自动去掉-->
+        <!--<dependency>-->
 
-            <groupId>org.springframework.boot</groupId>
+            <!--<groupId>org.springframework.boot</groupId>-->
 
-            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
 
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
 
-        </dependency>
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -57,11 +59,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>org.projectlombok</groupId>-->
-            <!--<artifactId>lombok</artifactId>-->
-            <!--<version>1.16.10</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -77,6 +79,11 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
         </dependency>
 
         <dependency>
@@ -115,13 +122,13 @@
             </plugin>
 
             <!-- 给war包起别名 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <warName>ideawork</warName>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-war-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<warName>ideawork</warName>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
 
         </plugins>
     </build>
