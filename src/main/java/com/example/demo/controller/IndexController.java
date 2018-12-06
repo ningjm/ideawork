@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.regex.Pattern;
@@ -42,7 +43,7 @@ public class IndexController {
     @Resource
     public IUserService userService;
 
-    @RequestMapping(value = "/page_info",method = RequestMethod.POST)
+    @RequestMapping(value = "/page_info",method = RequestMethod.GET)
     @ResponseBody
     public PageInfo<List<User>> page_info(){
         //若要返回json数据，把Controller改为RestController
@@ -71,6 +72,28 @@ public class IndexController {
     public ModelAndView index_html2(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("htl/2");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/free",method = RequestMethod.GET)
+    @ResponseBody
+    public ModelAndView free(){
+        List<User> users = new ArrayList<>();
+        User user1 = new User();
+        user1.setName("njm1");
+        User user2 = new User();
+        user2.setName("njm2");
+        User user3 = new User();
+        user3.setName(null);
+        User user4 = null;
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("htl/free");
+        modelAndView.addObject("users", users);
+        modelAndView.addObject("aa", "njjjjj");
         return modelAndView;
     }
 
