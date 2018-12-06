@@ -1,17 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="js/jquery-3.3.1.js"></script>
 
+    <!--因为在springboot的配置文件中使用了context-path,所以要使用thymeleaf动态引入vue.js-->
+    <!--<script th:src="@{/js/vue.js}"></script>-->
+    <!--<script th:src="@{/js/jquery-3.3.1.js}"></script>-->
+    <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="/js/vue.js"></script>
+    <!--vue内容要放在html元素后面，因为它要等待html元素加载完才能找到元素，例如下面这例子，
+    vue内容放在了html内容前面，因为html元素还没加载，所以报错找不到#app这个id-->
+    <!--<script>-->
+        <!--new Vue({-->
+            <!--el: "#app",-->
+            <!--data:{-->
+                <!--msg:'hello vue'-->
+            <!--}-->
+        <!--});-->
+    <!--</script>-->
     <script>
-        $(function () {
-            alert("aaa");
-        })
+       $(function () {
+           $("#aa").click(function () {
+               $.post("/njm1/test1/page_info", { name: "John", time: "2pm" },
+                   function(data){
+                       alert("Data Loaded: " + data.pageSize);
+                   });
+           });
+       })
     </script>
+
 </head>
 <body>
-<h1>哈哈哈</h1>
+    <div class="app">
+        <p>{{ msg }}</p>
+        <input type="text" v-model="msg">
+        <input type="button" value="点我获取ajax请求" id="aa">
+        <form action="/njm1/test1/index_html2" method="get">
+            <button type="submit">我是表单，点我提交到某方法,再跳到2.html页面</button>
+        </form>
+    </div>
+
+    <!--<script>-->
+        <!--new Vue({-->
+            <!--el: "#app",-->
+            <!--data:{-->
+                <!--msg:'hello vue'-->
+            <!--}-->
+        <!--});-->
+    <!--</script>-->
+    <script type="text/javascript" src="/js/vueapp.js"></script>
 </body>
 </html>

@@ -19,7 +19,9 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,8 +32,9 @@ import java.util.regex.Pattern;
  * 可以用maven的install来打jar、war包
  */
 
-@RestController
-//@Controller
+//@RestController
+@Controller
+@RequestMapping("/njm1/test1")
 public class IndexController {
 
     private static Logger logger =  LoggerFactory.getLogger(IndexController.class);
@@ -39,7 +42,8 @@ public class IndexController {
     @Resource
     public IUserService userService;
 
-    @RequestMapping(value = "/page_info",method = RequestMethod.GET)
+    @RequestMapping(value = "/page_info",method = RequestMethod.POST)
+    @ResponseBody
     public PageInfo<List<User>> page_info(){
         //若要返回json数据，把Controller改为RestController
         PageInfo<List<User>> users = userService.allUser();
@@ -47,16 +51,27 @@ public class IndexController {
     }
 
     @RequestMapping(value = "/index_html",method = RequestMethod.GET)
-    public String index_html(){
+    @ResponseBody
+    public ModelAndView index_html(){
         /**
          * spring.thymeleaf.prefix
          * 指定模板的前缀，默认为:classpath:/templates/
          * spring.thymeleaf.suffix
          * 指定模板的后缀，默认为:.html
          */
-        logger.info("指定模板的前缀，默认为:classpath:/templates/");
-        logger.error("指定模板的前缀，默认为:classpath:/templates/");
-        return "htl/index";
+        PageInfo<List<User>> page = userService.allUser();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject(page);
+        modelAndView.setViewName("htl/index");
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/index_html2",method = RequestMethod.GET)
+    public ModelAndView index_html2(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("htl/2");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/insert",method = RequestMethod.POST)
