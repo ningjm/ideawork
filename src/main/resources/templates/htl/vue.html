@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="op">
+        <p>${user.name}</p>
+        <span th:value="${user.name}"></span>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#op",
+            data:{
+                aa:${user.name}
+            }
+        })
+    </script>
+</body>
+</html>

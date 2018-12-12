@@ -91,8 +91,32 @@ public class IndexController {
         users.add(user3);
         users.add(user4);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("htl/free");
+        modelAndView.setViewName("htl/vue");
         modelAndView.addObject("users", users);
+        modelAndView.addObject("aa", "njjjjj");
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/vue",method = RequestMethod.GET)
+//    @ResponseBody
+    public ModelAndView vue(){
+        List<User> users = new ArrayList<>();
+        User user1 = new User();
+        user1.setName("njm1");
+        User user2 = new User();
+        user2.setName("njm2");
+//        User user3 = new User();
+//        user3.setName(null);
+//        User user4 = null;
+        users.add(user1);
+        users.add(user2);
+//        users.add(user3);
+//        users.add(user4);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("htl/vue");
+        modelAndView.addObject("users", users);
+        modelAndView.addObject("user", user1);
         modelAndView.addObject("aa", "njjjjj");
         return modelAndView;
     }
