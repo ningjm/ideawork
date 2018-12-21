@@ -17,10 +17,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -49,6 +46,11 @@ public class IndexController {
         //若要返回json数据，把Controller改为RestController
         PageInfo<List<User>> users = userService.allUser();
         return users;
+    }
+
+    @GetMapping("/element_ui")
+    public String elementUi(){
+        return "htl/elementui";
     }
 
     @RequestMapping(value = "/index_html",method = RequestMethod.GET)
