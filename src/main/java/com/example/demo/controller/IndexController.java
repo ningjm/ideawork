@@ -21,6 +21,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -51,6 +53,26 @@ public class IndexController {
     @GetMapping("/element_ui")
     public String elementUi(){
         return "htl/elementui";
+    }
+
+    @ResponseBody
+    @PostMapping("/set_session")
+    public void setSession(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        System.out.println(session.toString());
+        session.setAttribute("name", "xiaoming");
+        System.out.println(session.getId());
+    }
+
+    @ResponseBody
+    @PostMapping("/get_session")
+    public void getSession(HttpServletRequest request){
+        //getSession(false)如果为false：如果请求没有带上sessionid或带上的sessionid找不到，则不会创建新的session
+        //什么时候为false：集群的时候
+        HttpSession session = request.getSession();
+        Object name = session.getAttribute("name");
+        System.out.println(session.getId());
+        System.out.println(name.toString());
     }
 
     @RequestMapping(value = "/index_html",method = RequestMethod.GET)
